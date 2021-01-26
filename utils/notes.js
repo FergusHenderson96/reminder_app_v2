@@ -6,7 +6,7 @@ const addNote = (myNote) => {
   allNotes.push({ reminder: myNote });
   console.log(
     chalk.green(`
-  Added new note: ${myNote}
+  Topping added: ${myNote}
   `)
   );
   saveNotes(allNotes);
