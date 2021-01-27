@@ -1,56 +1,61 @@
-const fs = require("fs");
-const chalk = require("chalk");
+// const {connection} = require ("mongoose") 
+// require ("../src/db/connection")
 
-const addNote = (myNote) => {
-  const allNotes = loadNotes();
-  allNotes.push({ reminder: myNote });
-  console.log(
-    chalk.green(`
-  Topping added: ${myNote}
-  `)
-  );
-  saveNotes(allNotes);
-};
+// const 
 
-const loadNotes = () => {
-  try {
-    const dataBuffer = fs.readFileSync("src/notes.json");
-    const notesJson = dataBuffer.toString();
-    return JSON.parse(notesJson);
-  } catch (error) {
-    return [];
-  }
-};
+// const fs = require("fs");
+// const chalk = require("chalk");
 
-const saveNotes = (allNotes) => {
-  const notesJson = JSON.stringify(allNotes);
-  fs.writeFileSync("src/notes.json", notesJson);
-};
+// const addNote = (myNote) => {
+//   const allNotes = loadNotes();
+//   allNotes.push({ reminder: myNote });
+//   console.log(
+//     chalk.green(`
+//   Topping added: ${myNote}
+//   `)
+//   );
+//   saveNotes(allNotes);
+// };
 
-const listNotes = () => {
-  const allNotes = loadNotes();
-  allNotes.map((note, index) => {
-    console.log(`${index + 1}. ${note.reminder}`);
-  });
-};
+// const loadNotes = () => {
+//   try {
+//     const dataBuffer = fs.readFileSync("src/notes.json");
+//     const notesJson = dataBuffer.toString();
+//     return JSON.parse(notesJson);
+//   } catch (error) {
+//     return [];
+//   }
+// };
 
-const removeNote = (noteToDelete) => {
-  const allNotes = loadNotes();
+// const saveNotes = (allNotes) => {
+//   const notesJson = JSON.stringify(allNotes);
+//   fs.writeFileSync("src/notes.json", notesJson);
+// };
 
-  try {
-    const removedItem = allNotes.splice(noteToDelete - 1, 1);
-    console.log(`
-    Successfully removed ${removedItem[0].reminder}
-    `);
-  } catch (error) {
-    console.log("Number out of range");
-  }
+// const listNotes = () => {
+//   const allNotes = loadNotes();
+//   allNotes.map((note, index) => {
+//     console.log(`${index + 1}. ${note.reminder}`);
+//   });
+// };
 
-  saveNotes(allNotes);
-};
+// const removeNote = (noteToDelete) => {
+//   const allNotes = loadNotes();
 
-module.exports = {
-  addNote,
-  listNotes,
-  removeNote,
-};
+//   try {
+//     const removedItem = allNotes.splice(noteToDelete - 1, 1);
+//     console.log(`
+//     Successfully removed ${removedItem[0].reminder}
+//     `);
+//   } catch (error) {
+//     console.log("Number out of range");
+//   }
+
+//   saveNotes(allNotes);
+// };
+
+// module.exports = {
+//   addNote,
+//   listNotes,
+//   removeNote,
+// };
