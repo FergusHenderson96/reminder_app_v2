@@ -7,7 +7,7 @@ const inquirer = require("inquirer");
 const chalk = require("chalk");
 
 //imports functions from notes.js file
-const { addNote, listNotes, removeNote } = require("../utils/notes.js");
+//const { addNote, listNotes, removeNote } = require("../utils/notes.js");
 
 //first question logged when program run
 const topLevelQuestion = [
@@ -38,6 +38,7 @@ const app = async () => {
     const answer = await inquirer.prompt(addQuestion);
     //once typed and entered, the answer is entered into log(answer)
     //addNote(answer.add);
+    //creates new object within Order called toppings with the answer from the text
     const order = new Order({
       toppings: answer.add,
     });
@@ -47,8 +48,10 @@ const app = async () => {
     //if the answer to the main question is list topping
   } else if (answers.options == "List toppings") {
     //lists items added to log (answer)
-    // listNotes();
+    // listNotes(); 
+    //creates constant that finds all entries in the Order object
     const showOrders = await Order.find({});
+    //logs the order
     console.log(showOrders);
     //runs the app function again
     app();
@@ -56,6 +59,7 @@ const app = async () => {
   } else if (answers.options == "Remove topping") {
     //lists items in log (answer) to remove
     //listNotes();
+    //creates the showOrders constant again to list the Order object
     const showOrders = await Order.find({});
     console.log(showOrders);
     //waiting for answer to remove item from list
